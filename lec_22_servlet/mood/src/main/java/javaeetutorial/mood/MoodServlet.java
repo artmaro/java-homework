@@ -11,9 +11,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 
 @WebServlet("/report")
 public class MoodServlet extends HttpServlet {
@@ -30,6 +28,13 @@ public class MoodServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
+        //Создает сессионную куки
+        HttpSession session = request.getSession();
+        System.out.println("session id " + session.getId());
+        Cookie userCookie = new Cookie("my_cookie_name", "cookie_value");
+        userCookie.setMaxAge(60*60*24*365); //Store cookie for 1 year
+        response.addCookie(userCookie);
+
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             out.println("<html lang=\"en\">");
