@@ -24,7 +24,7 @@ public class ColourFun {
 
         paintAllFigures(box, Colour.WHITE);
 
-        Map<Colour, Figure> groupedByColour = groupByColour(box);
+        Map<Colour, List<Figure>> groupedByColour = groupByColour(box);
 
         int sumOfYellowDotsAndBlackSquares = sumOfYellowDotsAndBlackSquares(box);
     }
@@ -34,7 +34,7 @@ public class ColourFun {
         return 0;
     }
 
-    private static Map<Colour, Figure> groupByColour(Box box) {
+    private static Map<Colour, List<Figure>> groupByColour(Box box) {
         //TODO 2 task
         return null;
     }
