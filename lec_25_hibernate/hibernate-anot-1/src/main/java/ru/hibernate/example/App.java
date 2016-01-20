@@ -8,8 +8,7 @@ import org.hibernate.Session;
  */
 public class App 
 {
-    public static void main( String[] args )
-    {
+    public static void main( String[] args ) throws InterruptedException {
         try {
 
             Session session = HibernateUtil.getSessionFactory().openSession();
@@ -21,6 +20,14 @@ public class App
             stock.setStockName("KOU");
 
             session.save(stock);
+
+            int i = 10;
+            while (i >0){
+                Thread.sleep(200);
+                stock.setStockName("Name " + i);
+                i--;
+            }
+
 
             stock = new Stock();
 
@@ -45,7 +52,7 @@ public class App
             session.close();
 
             if(withSameAddress == stock){
-                System.out.println("Same address in memmory");
+                System.out.println("Same address in memmory " + withSameAddress.toString());
             }
 
 
