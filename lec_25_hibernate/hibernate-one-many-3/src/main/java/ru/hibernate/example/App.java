@@ -36,6 +36,15 @@ public class App {
 
         //stats.logSummary();
 
+        session.close();
+        session = HibernateUtil.getSessionFactory().openSession();
+
+        stock = (Stock) session.get(Stock.class, 1);
+
+        System.out.println(stock.getStockName());
+        System.out.println(stock.getStockDailyRecords().size());
+
+
         HibernateUtil.shutdown();
 
     }

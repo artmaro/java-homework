@@ -50,7 +50,7 @@ public class StockDetail implements java.io.Serializable {
         this.stockId = stockId;
     }
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
     @PrimaryKeyJoinColumn
     public Stock getStock() {
         return this.stock;

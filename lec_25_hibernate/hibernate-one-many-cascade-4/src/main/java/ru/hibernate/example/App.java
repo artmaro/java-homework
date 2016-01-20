@@ -48,6 +48,9 @@ public class App {
             session.saveOrUpdate(stock);
 
             session.getTransaction().commit();
+            session.beginTransaction();
+            session.delete(stock);
+            session.getTransaction().commit();
 
 
         } finally {

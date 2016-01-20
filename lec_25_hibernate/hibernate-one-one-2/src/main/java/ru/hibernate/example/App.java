@@ -21,6 +21,8 @@ public class App
 
             stock.setStockCode("7052");
             stock.setStockName("PADINI");
+           // stock.setStockName("PADINI1111111111111111111111111111111");
+            stock.setSum(40);//если меньше 4 то будет ошибка
 
             StockDetail stockDetail = new StockDetail();
             stockDetail.setCompName("PADINI Holding Malaysia");
@@ -41,9 +43,11 @@ public class App
             session.beginTransaction();
 
             stock = null;
-            stock = (Stock) session.get(Stock.class, 1);//выполняется 2 запроса, несмотря на lazy load из-за особенностей hibernate
+            stock = (Stock) session.get(Stock.class, 1);//выполняется 2 запроса, если optional = true
             System.out.println("stock name " + stock.getStockName());
 
+
+            System.out.println("stock detail " + stock.getStockDetail());
 
             session.getTransaction().commit();
 

@@ -1,4 +1,7 @@
 package ru.hibernate.example;
+import org.hibernate.annotations.LazyToOne;
+import org.hibernate.annotations.LazyToOneOption;
+
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.*;
@@ -62,6 +65,7 @@ public class Stock implements java.io.Serializable {
     }
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "stock")
+    @LazyToOne(LazyToOneOption.NO_PROXY)
     public Set<StockDailyRecord> getStockDailyRecords() {
         return this.stockDailyRecords;
     }
